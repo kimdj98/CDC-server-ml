@@ -7,6 +7,9 @@ this code is python server gor project hearsitter, solution challenge.
 this code is made with python.
 also grpc is used for connecting [go server](https://github.com/jimmy0006/hearsitter-server-go).
 
+deploy is available by docker image
+docker pull jin0006/solution-python:2.1.0
+
 ## how it works?
 
 ![슬라이드1](https://user-images.githubusercontent.com/45549879/225945874-250d63cc-198e-4168-982f-ac4ab5d47274.PNG)
