@@ -16,7 +16,7 @@ deploy is available by docker image
 
 ## reference
 
-landing page[https://github.com/mumwa/hearsitter-landingpage](https://github.com/mumwa/hearsitter-landingpage)
+landing page [https://github.com/mumwa/hearsitter-landingpage](https://github.com/mumwa/hearsitter-landingpage)
 
 python grpc [https://grpc.io/docs/languages/python/quickstart/](https://grpc.io/docs/languages/python/quickstart/)
 
