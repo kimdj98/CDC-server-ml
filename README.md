@@ -2,7 +2,7 @@
 
 this code is python server gor project hearsitter, solution challenge.
 
-##what this is made of?
+## what this is made of?
 
 this code is made with python.
 also grpc is used for connecting [go server](https://github.com/jimmy0006/hearsitter-server-go).
