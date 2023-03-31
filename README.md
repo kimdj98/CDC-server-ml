@@ -1,3 +1,7 @@
+<p align="center">
+<img src="https://user-images.githubusercontent.com/88659167/229131308-d658434a-cc34-46d0-a3da-4f2cb86272d0.png" width="100px" alt="HearSitter Logo" />
+</p>
+
 # hearsitter-server-python
 
 this code is python server gor project hearsitter, solution challenge.
