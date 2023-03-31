@@ -24,6 +24,6 @@ landing page [https://github.com/mumwa/hearsitter-landingpage](https://github.co
 
 python grpc [https://grpc.io/docs/languages/python/quickstart/](https://grpc.io/docs/languages/python/quickstart/)
 
-go server [https://github.com/jimmy0006/hearsitter-server-go](https://github.com/jimmy0006/hearsitter-server-go)
+go server [https://github.com/jimmy0006/hearsitter-server-main](https://github.com/jimmy0006/hearsitter-server-main)
 
 model [https://github.com/kimdj98/hearsitter-ML.git](https://github.com/kimdj98/hearsitter-ML.git)
