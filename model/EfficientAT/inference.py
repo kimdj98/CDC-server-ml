@@ -1,3 +1,6 @@
+import sys
+sys.path.insert(0, '.')
+
 import argparse
 import torch
 import glob
@@ -17,8 +20,8 @@ import pdb
 
 parser = argparse.ArgumentParser(description='Example of parser. ')
 # model name decides, which pre-trained model is loaded
-parser.add_argument('--cuda', action='store_true', default=False)
-parser.add_argument('--audio_path', type=str, required=False, default="resources/9rw3qz2ouRQ_290.wav")
+parser.add_argument('--cuda', action='store_true', default=True)
+parser.add_argument('--audio_path', type=str, required=False, default="resources/metro_station-paris.wav")
 
 # preprocessing
 parser.add_argument('--sample_rate', type=int, default=32000)

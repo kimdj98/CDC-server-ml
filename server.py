@@ -40,12 +40,12 @@ class File(sound_pb2_grpc.FileServicer):
         #using tagging rate, define if we have to alarm client
         percent = temp[result]
         if result=="Car horn":
-            if percent>0.1:
+            if percent>0.03:
                 alarm=True
             else:
                 alarm=False
         else:
-            if percent>0.15:
+            if percent>0.05:
                 alarm=True
             else:
                 alarm=False
