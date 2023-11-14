@@ -98,67 +98,67 @@ def inference(audio_path):
     # ========= Sound to detect =========
 
     # Car horn sound
-    result.update({"Vehicle horn": preds[308]}) # 0.4
-    result.update({"Train horn":preds[331]}) # 0.1
-    result.update({"Foghorn":preds[401]}) # 0.1
-    result.update({"Air horn, truck horn": preds[318]}) # 0.4
+    # result.update({"Vehicle horn": preds[308]}) # 0.4
+    # result.update({"Train horn":preds[331]}) # 0.1
+    # result.update({"Foghorn":preds[401]}) # 0.1
+    # result.update({"Air horn, truck horn": preds[318]}) # 0.4
     output.update({"Car horn": preds[308]*0.4 + preds[331]*0.1 + preds[401]*0.1 + preds[318]*0.4})
 
     # Infant Crying sound
-    result.update({"Baby Crying": preds[23]}) # 0.6
-    result.update({"Baby Laughter": preds[17]}) # 0.2
-    result.update({"Giggle": preds[18]}) # 0.5
-    result.update({"Whimper": preds[24]}) # 0.5
-    result.update({"Child speech, kid speaking": preds[3]}) # 0.5
-    result.update({"Crying, sobbing": preds[22]}) # 0.5
+    # result.update({"Baby Crying": preds[23]}) # 0.6
+    # result.update({"Baby Laughter": preds[17]}) # 0.2
+    # result.update({"Giggle": preds[18]}) # 0.5
+    # result.update({"Whimper": preds[24]}) # 0.5
+    # result.update({"Child speech, kid speaking": preds[3]}) # 0.5
+    # result.update({"Crying, sobbing": preds[22]}) # 0.5
     output.update({"Infant Crying": preds[23]*0.6 + preds[17]*0.2 + preds[18]*0.05 + preds[24]*0.05 + preds[3]*0.05 + preds[22]*0.05})
 
     # Glass
-    result.update({"Glass": preds[441]}) # 0.45
-    result.update({"Chink, clink": preds[442]}) # 0.45
-    result.update({"Crack": preds[440]}) # 0.1
+    # result.update({"Glass": preds[441]}) # 0.45
+    # result.update({"Chink, clink": preds[442]}) # 0.45
+    # result.update({"Crack": preds[440]}) # 0.1
     output.update({"Glass": preds[441]*0.45 + preds[442]*0.45 + preds[440]*0.1})
 
     # TODO: Screaming
-    result.update({"Screaming": preds[14]}) # ???
+    # result.update({"Screaming": preds[14]}) # ???
     output.update({"Screaming": preds[14]*3.00})
     
     # Explosion
-    result.update({"Explosion": preds[426]}) # 0.30
-    result.update({"Artillery fire"}: preds[430]) # 0.60
-    result.update("Gunshot": preds[427]) # 0.10
+    # result.update({"Explosion": preds[426]}) # 0.30
+    # result.update({"Artillery fire": preds[430]}) # 0.60
+    # result.update({"Gunshot": preds[427]}) # 0.10
     output.update({"Explosion": preds[426]*0.30 + preds[430]*0.60 + preds[427]*0.1})
 
     # Dog bark
-    result.update({"Animal": preds[72]}) # 0.3
-    result.update({"Dog": preds[74]}) # 0.3
-    result.update({"Domestic animals, pets": preds[73]}) # 0.3
-    result.update({"Bow-wow": preds[78]}) # 0.1
+    # result.update({"Animal": preds[72]}) # 0.3
+    # result.update({"Dog": preds[74]}) # 0.3
+    # result.update({"Domestic animals, pets": preds[73]}) # 0.3
+    # result.update({"Bow-wow": preds[78]}) # 0.1
     output.update({"Dog bark": preds[72]*0.30 + preds[74]*0.30 + preds[73]*0.30 + preds[78]*0.10})
 
     # Siren
-    result.update({"Police car(siren)": preds[323]}) # 0.33
-    result.update({"Ambulance(siren)": preds[324]}) # 0.33
-    result.update({"Fire truck(siren)": preds[325]}) # 0.33
+    # result.update({"Police car(siren)": preds[323]}) # 0.33
+    # result.update({"Ambulance(siren)": preds[324]}) # 0.33
+    # result.update({"Fire truck(siren)": preds[325]}) # 0.33
     # output.update({"Car siren": preds[323]*0.33 + preds[324]*0.33 + preds[325]*0.33})
 
     # Tools
-    result.update({"Drill": preds[425]}) # 0.33
-    result.update({"Tools": preds[418]}) # 0.33
-    result.update({"Power tool": preds[424]}) # 0.33
+    # result.update({"Drill": preds[425]}) # 0.33
+    # result.update({"Tools": preds[418]}) # 0.33
+    # result.update({"Power tool": preds[424]}) # 0.33
     output.update({"Tools": preds[425]*0.33 + preds[418]*0.33 + preds[424]*0.33})
 
     # Bicycle bell 
-    result.update({"Bicycle": preds[341]}) # 0.1
-    result.update({"Bicycle bell": preds[203]}) # 0.5
-    result.update({"Bell": preds[200]}) # 0.4
+    # result.update({"Bicycle": preds[341]}) # 0.1
+    # result.update({"Bicycle bell": preds[203]}) # 0.5
+    # result.update({"Bell": preds[200]}) # 0.4
     output.update({"Bicycle bell": preds[341]*0.1 + preds[203]*0.5 + preds[200]*0.4})
 
     # Fire Alarm
-    result.update({"Fire alarm": preds[400]}) # 0.35
-    result.update({"Smoke detector, smoke alarm":preds[399]}) # 0.35
-    result.update({"Siren":preds[396]}) # 0.2
-    result.update({"Buzzer":preds[398]}) # 0.1
+    # result.update({"Fire alarm": preds[400]}) # 0.35
+    # result.update({"Smoke detector, smoke alarm":preds[399]}) # 0.35
+    # result.update({"Siren":preds[396]}) # 0.2
+    # result.update({"Buzzer":preds[398]}) # 0.1
     output.update({"Fire alarm": (preds[400]*0.35 + preds[399]*0.35 + preds[396]*0.2 + preds[398]*0.1)})
 
     # Gunshot: Not to be used
