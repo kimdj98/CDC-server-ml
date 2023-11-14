@@ -121,11 +121,17 @@ def inference(audio_path):
 
     # TODO: Screaming
     result.update({"Screaming": preds[14]}) # ???
-    output.update({"Screaming": preds[14]*1.00})
+    output.update({"Screaming": preds[14]*5.00})
     
+    # explosion
+    # artillery fire
+    # gunshot
+    # fire
     # TODO: Explosion
-    result.update({"Explosion": preds[426]}) # ???
-    output.update({"Explosion": preds[426]*1.00})
+    result.update({"Explosion": preds[426]}) # 0.30
+    result.update({"Artillery fire"}: preds[430]) # 0.60
+    result.update("Gunshot": preds[427]) # 0.10
+    output.update({"Explosion": preds[426]*0.30 + preds[430]*0.60 + preds[427]*0.1})
 
     # TODO: Dog bark
     result.update({"Dog bark": preds[426]}) # ???
@@ -142,13 +148,13 @@ def inference(audio_path):
     result.update({"Tools": preds[418]}) # ???
     output.update({"Tools": preds[425]*0.5 + preds[418]*0.5})
 
-    # Bicycle Bell 
+    # Bicycle bell 
     result.update({"Bicycle": preds[341]}) # 0.1
-    result.update({"Bicycle Bell": preds[203]}) # 0.9
-    output.update({"Bicycle Bell": preds[341]*0.1 + preds[203]*0.9})
+    result.update({"Bicycle bell": preds[203]}) # 0.9
+    output.update({"Bicycle bell": preds[341]*0.1 + preds[203]*0.9})
 
     # Fire Alarm
-    result.update({"Fire Alarm": preds[400]}) # 0.35
+    result.update({"Fire alarm": preds[400]}) # 0.35
     result.update({"Smoke detector, smoke alarm":preds[399]}) # 0.35
     result.update({"Siren":preds[396]}) # 0.2
     result.update({"Buzzer":preds[398]}) # 0.1
@@ -172,47 +178,47 @@ def inference(audio_path):
 # comment this to not show test inference for the first time
 print(inference(audio_path))
 
-# def audio_tagging(args):
-#     """
-#     Running Inference on an audio clip.
-#     """
-#     model_name = args.model_name
-#     device = torch.device('cuda') if args.cuda and torch.cuda.is_available() else torch.device('cpu')
-#     audio_path = args.audio_path
-#     sample_rate = args.sample_rate
-#     window_size = args.window_size
-#     hop_size = args.hop_size
-#     n_mels = args.n_mels
+def audio_tagging(args):
+    """
+    Running Inference on an audio clip.
+    """
+    model_name = args.model_name
+    device = torch.device('cuda') if args.cuda and torch.cuda.is_available() else torch.device('cpu')
+    audio_path = args.audio_path
+    sample_rate = args.sample_rate
+    window_size = args.window_size
+    hop_size = args.hop_size
+    n_mels = args.n_mels
 
-#     # load pre-trained model
-#     if len(args.ensemble) > 0:
-#         model = get_ensemble_model(args.ensemble)
-#     else:
-#         model = get_mobilenet(width_mult=NAME_TO_WIDTH(model_name), pretrained_name=model_name)
-#     model.to(device)
-#     model.eval()
+    # load pre-trained model
+    if len(args.ensemble) > 0:
+        model = get_ensemble_model(args.ensemble)
+    else:
+        model = get_mobilenet(width_mult=NAME_TO_WIDTH(model_name), pretrained_name=model_name)
+    model.to(device)
+    model.eval()
 
-#     # model to preprocess waveform into mel spectrograms
-#     mel = AugmentMelSTFT(n_mels=n_mels, sr=sample_rate, win_length=window_size, hopsize=hop_size)
-#     mel.to(device)
-#     mel.eval()
+    # model to preprocess waveform into mel spectrograms
+    mel = AugmentMelSTFT(n_mels=n_mels, sr=sample_rate, win_length=window_size, hopsize=hop_size)
+    mel.to(device)
+    mel.eval()
 
-#     (waveform, _) = librosa.core.load(audio_path, sr=sample_rate, mono=True)
-#     waveform = torch.from_numpy(waveform[None, :]).to(device)
+    (waveform, _) = librosa.core.load(audio_path, sr=sample_rate, mono=True)
+    waveform = torch.from_numpy(waveform[None, :]).to(device)
 
-#     # our models are trained in half precision mode (torch.float16)
-#     # run on cuda with torch.float16 to get the best performance
-#     # running on cpu with torch.float32 gives similar performance, using torch.bfloat16 is worse
-#     with torch.no_grad(), autocast(device_type=device.type) if args.cuda else nullcontext():
-#         spec = mel(waveform)
-#         preds, features = model(spec.unsqueeze(0))
-#     preds = torch.sigmoid(preds.float()).squeeze().cpu().numpy()
+    # our models are trained in half precision mode (torch.float16)
+    # run on cuda with torch.float16 to get the best performance
+    # running on cpu with torch.float32 gives similar performance, using torch.bfloat16 is worse
+    with torch.no_grad(), autocast(device_type=device.type) if args.cuda else nullcontext():
+        spec = mel(waveform)
+        preds, features = model(spec.unsqueeze(0))
+    preds = torch.sigmoid(preds.float()).squeeze().cpu().numpy()
 
-#     sorted_indexes = np.argsort(preds)[::-1]
+    sorted_indexes = np.argsort(preds)[::-1]
 
-#     # Print audio tagging top probabilities
-#     print("************* Acoustic Event Detected: *****************")
-#     for k in range(10):
-#         print('{}: {:.3f}'.format(labels[sorted_indexes[k]],
-#             preds[sorted_indexes[k]]))
-#     print("********************************************************")
+    # Print audio tagging top probabilities
+    print("************* Acoustic Event Detected: *****************")
+    for k in range(10):
+        print('{}: {:.3f}'.format(labels[sorted_indexes[k]],
+            preds[sorted_indexes[k]]))
+    print("********************************************************")
