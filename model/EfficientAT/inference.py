@@ -123,19 +123,18 @@ def inference(audio_path):
     result.update({"Screaming": preds[14]}) # ???
     output.update({"Screaming": preds[14]*5.00})
     
-    # explosion
-    # artillery fire
-    # gunshot
-    # fire
-    # TODO: Explosion
+    # Explosion
     result.update({"Explosion": preds[426]}) # 0.30
     result.update({"Artillery fire"}: preds[430]) # 0.60
     result.update("Gunshot": preds[427]) # 0.10
     output.update({"Explosion": preds[426]*0.30 + preds[430]*0.60 + preds[427]*0.1})
 
-    # TODO: Dog bark
-    result.update({"Dog bark": preds[426]}) # ???
-    output.update({"Dog bark": preds[426]*1.00})
+    # Dog bark
+    result.update({"Animal": preds[72]}) # 0.3
+    result.update({"Dog": preds[74]}) # 0.3
+    result.update({"Domestic animals, pets": preds[73]}) # 0.3
+    result.update({"Bow-wow": preds[78]}) # 0.1
+    output.update({"Dog bark": preds[72]*0.30 + preds[74]*0.30 + preds[73]*0.30 + preds[78]*0.10})
 
     # Siren
     result.update({"Police car(siren)": preds[323]}) # 0.33
