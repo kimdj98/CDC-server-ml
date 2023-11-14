@@ -121,7 +121,7 @@ def inference(audio_path):
 
     # TODO: Screaming
     result.update({"Screaming": preds[14]}) # ???
-    output.update({"Screaming": preds[14]*5.00})
+    output.update({"Screaming": preds[14]*3.00})
     
     # Explosion
     result.update({"Explosion": preds[426]}) # 0.30
