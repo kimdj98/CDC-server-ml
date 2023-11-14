@@ -142,10 +142,11 @@ def inference(audio_path):
     result.update({"Fire truck(siren)": preds[325]}) # 0.33
     # output.update({"Car siren": preds[323]*0.33 + preds[324]*0.33 + preds[325]*0.33})
 
-    # TODO: Drill + Tools
-    result.update({"Drill": preds[425]}) # ???
-    result.update({"Tools": preds[418]}) # ???
-    output.update({"Tools": preds[425]*0.5 + preds[418]*0.5})
+    # Drill + Tools
+    result.update({"Drill": preds[425]}) # 0.33
+    result.update({"Tools": preds[418]}) # 0.33
+    result.update({"Power tool": preds[424]}) # 0.33
+    output.update({"Tools": preds[425]*0.33 + preds[418]*0.33 + preds[424]*0.33})
 
     # Bicycle bell 
     result.update({"Bicycle": preds[341]}) # 0.1
